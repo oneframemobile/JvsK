@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.android.kocsistem.jvsk.oop.MobilePhone
+import com.android.kocsistem.jvsk.oop.PDA
+import com.android.kocsistem.jvsk.oop.Phone
 
 class KActivity : AppCompatActivity() {
 
@@ -21,6 +24,18 @@ class KActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val phones = ArrayList<Phone>()
+        val moto = MobilePhone("MT-150", "Motorola").apply {
+            polyphonicMelody = "dombra dombra"
+        }
+        val android = PDA("S9100", "Samsung").apply {
+            mp3 = "daglardalgar.mp3"
+        }
+
+        phones.add(moto)
+        phones.add(android)
+        phones.forEach { it.call() }
     }
 
     override fun onResume() {
